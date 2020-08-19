@@ -8,8 +8,9 @@
     "npm": "6.14.6"
   },
   "scripts": {
-    "start": "gulp",
-    "build": "gulp sass"
+    "start": "node app",
+    "build": "gulp sass",
+    "postinstall": "gulp default"
   },
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
