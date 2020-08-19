@@ -1,5 +1,5 @@
 var gulp          = require('gulp');
-var connect       = require('gulp-connect');
+var serveGulp     = require('gulp-serve');
 var browserSync   = require('browser-sync').create();
 var $             = require('gulp-load-plugins')();
 var autoprefixer  = require('autoprefixer');
@@ -35,10 +35,7 @@ function serve() {
 gulp.task('sass', sass);
 gulp.task('serve', gulp.series('sass', serve));
 gulp.task('default', gulp.series('sass', serve));
-gulp.task('serveprod', function() {
-  connect.server({
-    root: '/',
-    port: process.env.PORT || 3000, // localhost:5000
-    livereload: false
-  });
-});
+gulp.task('serveprod', serveGulp({
+  root: ['public', 'build'],
+  port: process.env.PORT || 3000
+}));
